@@ -36,5 +36,5 @@ public interface PostServico {
     //deleta o post baseado no id
     @DELETE("posts/{id}")
     Call<Void> delete(@Path("id") Integer id);
-    
+
 }

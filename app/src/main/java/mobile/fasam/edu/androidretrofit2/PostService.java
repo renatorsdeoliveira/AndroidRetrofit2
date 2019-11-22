@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface PostServico {
+public interface PostService {
     //Envia um post para o servidor
     @POST("posts")
     Call<Posts> post(@Body Posts posts);

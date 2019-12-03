@@ -38,22 +38,17 @@ public class PostAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
-        // inflate the layout for each list row
-        //'Infla' o layout(pega a referencia) para ser trabalhada
-        //no método
+
         if (view == null) {
             view = LayoutInflater.from(context).
                     inflate(R.layout.item_post,
                             parent, false);
         }
 
-        //pega  o objeto corrente da lista
         Posts posts = (Posts)getItem(position);
 
-        // Declarar campos para preencher o layout item
         TextView userId, title;
 
-        //Pegando referencia do layout
         userId = view.findViewById(R.id.txtUserId);
         title = view.findViewById(R.id.txtTitle);
 

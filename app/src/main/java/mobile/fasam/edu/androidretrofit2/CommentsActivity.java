@@ -3,7 +3,6 @@ package mobile.fasam.edu.androidretrofit2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -14,7 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PostActivity extends AppCompatActivity {
+public class CommentsActivity extends AppCompatActivity {
 
     EditText txtId;
     EditText txtUserId;
@@ -23,33 +22,32 @@ public class PostActivity extends AppCompatActivity {
     ListView listView;
 
 
-    // Criar referencia para consumir serviço
-    PostService postService;
+    CommentsService commentService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_comments);
     }
 
     private void carregarDados(){
 
         // fazer injeção de dependencias da interface
-        postService = BoostrapApi.getclient().create(PostService.class);
+        commentService = BoostrapApi.getclient().create(CommentsService.class);
 
-        Call<List<Posts>> get = postService.get();
+        Call<List<Comments>> get = commentService.get();
 
-        get.enqueue(new Callback<List<Posts>>() {
+        get.enqueue(new Callback<List<Comments>>() {
             @Override
-            public void onResponse(Call<List<Posts>> call, Response<List<Posts>> response) {
+            public void onResponse(Call<List<Comments>> call, Response<List<Comments>> response) {
                 //Recuperar a lista de posts
-                List<Posts> posts = response.body();
+                List<Comments> posts = response.body();
 
                 //pegar referencia da listview
                 listView = findViewById(R.id.listviewPost);
 
-                PostAdapter adapter =
-                        new PostAdapter(getApplicationContext(), posts);
+                CommentsAdapter adapter =
+                        new CommentsAdapter(getApplicationContext(), posts);
 
                 //Fazer "bind" com a listView;
                 listView.setAdapter(adapter);
@@ -57,7 +55,7 @@ public class PostActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Posts>> call, Throwable t) {
+            public void onFailure(Call<List<Comments>> call, Throwable t) {
 
             }
         });

@@ -7,9 +7,10 @@ import lombok.ToString;
 @Data
 @ToString
 @Builder
-public class Posts {
-    private Integer userId;
+public class Comments {
+    private Integer postId;
     private Integer id;
-    private String title;
+    private String name;
+    private String email;
     private String body;
 }
